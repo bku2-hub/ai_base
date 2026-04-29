@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시스템 상태 모니터링</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>시스템 상태 모니터링</h1>
+            <div class="status-indicator">
+                <span class="dot pulse"></span> 실시간 연동 중
+            </div>
+        </header>
+
+        <main class="grid-container">
+            <!-- CPU Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2>CPU 사용량</h2>
+                </div>
+                <div class="card-body center-content">
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress" id="cpu-ring" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <div class="percentage" id="cpu-text">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CPU Temperature Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2>CPU 온도</h2>
+                </div>
+                <div class="card-body center-content">
+                    <div class="progress-ring temp-ring">
+                        <div class="percentage" id="cputemp-text" style="font-size: 1.2rem;">지원안함</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2>메모리 사용량</h2>
+                </div>
+                <div class="card-body">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="mem-bar"></div>
+                    </div>
+                    <div class="details">
+                        <p><span id="mem-used">0</span> GB / <span id="mem-total">0</span> GB</p>
+                        <p class="percent" id="mem-text">0%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disk Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2>로컬 디스크 (C:) 사용량</h2>
+                </div>
+                <div class="card-body">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="disk-bar"></div>
+                    </div>
+                    <div class="details">
+                        <p class="percent" id="disk-text">0%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Battery Card -->
+            <div class="glass-card" id="battery-card" style="display: none;">
+                <div class="card-header">
+                    <h2>배터리 잔량</h2>
+                </div>
+                <div class="card-body center-content">
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress" id="battery-ring" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <div class="percentage" id="battery-text">0%</div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- Socket.IO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
