@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Todo App</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="app-container">
+        <header class="header">
+            <h1><i class="fa-solid fa-layer-group"></i> My Tasks</h1>
+            <p class="subtitle">Stay productive, stay focused.</p>
+        </header>
+
+        <div class="input-section">
+            <div class="inputs">
+                <input type="text" id="todoInput" placeholder="새로운 할 일을 입력하세요...">
+                <input type="text" id="memoInput" placeholder="작은 메모를 추가하세요 (선택)">
+            </div>
+            <button id="addBtn"><i class="fa-solid fa-plus"></i></button>
+        </div>
+
+        <div class="todo-list-container">
+            <ul id="todoList" class="todo-list">
+                <!-- Todos will be injected here -->
+            </ul>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
